@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="MAIN" Id="{4050dae3-d7dc-4ead-9eb6-5b390007f3e7}" SpecialFunc="None">
+  <POU Name="MAIN" Id="{da3335d5-2921-4feb-a164-c36a9053f2bd}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	bEnable : BOOL := FALSE; 
+	bEnable : BOOL;
 	bStart : BOOL; 
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[bEnable := bStart; 
-
-]]></ST>
+      <ST><![CDATA[bEnable := bStart; ]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
