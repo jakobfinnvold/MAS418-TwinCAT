@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+// https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/MQueues.html
+
 struct sender_data {
     int ID;
     double temp;
