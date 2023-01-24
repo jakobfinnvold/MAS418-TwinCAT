@@ -9,7 +9,7 @@ except socket.error as e:
     print(str(e))
 res = ClientMultiSocket.recv(1024)
 while True:
-    Input = input('Hey there: ')
+    Input = input('Hey there: This is client x')
     ClientMultiSocket.send(str.encode(Input))
     res = ClientMultiSocket.recv(1024)
     print(res.decode('utf-8'))
