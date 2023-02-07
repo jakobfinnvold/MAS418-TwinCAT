@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="P_Task1" Id="{924351f1-0cc0-446b-8c55-015dccfff7e6}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_Task1
+VAR
+	pToDate : POINTER TO DATE_AND_TIME; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pToDate := ADR(G_VarTask1.tdCurrentDate); 
+
+pToDate^:= DT#2023-02-08-15:35:20; ]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
