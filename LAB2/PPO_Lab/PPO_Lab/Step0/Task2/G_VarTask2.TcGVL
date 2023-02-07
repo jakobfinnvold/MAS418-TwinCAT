@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_VarTask2" Id="{ea877634-be51-4f00-ad41-3d249dd38b67}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	stTimer2 : ST_Timer :=(tTimer:=T#5S); 
+	fAngPosDeg : REAL := 90; 
+	fAngPosRad : REAL; 
+	fPiVal : REAL := 3.14159; 
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

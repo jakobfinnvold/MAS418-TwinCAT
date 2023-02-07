@@ -33,10 +33,24 @@
     <Compile Include="Task1\P_Task1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Task2\G_VarTask2.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="Task2\Deg2Rad.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task2\P_Task2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task2\ST_Timer.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="Task2" />
     <Folder Include="Task1" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

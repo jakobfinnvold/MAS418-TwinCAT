@@ -6,6 +6,7 @@ VAR
 	pToDate : POINTER TO DATE_AND_TIME; 
 	nRefToTime : REFERENCE TO TIME; 
 	fbTon : TON := (PT:=G_VarTask1.tTimer);   
+	fbTof : TOF := (PT:=G_VarTask2.stTimer2.tTimer); 
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -19,9 +20,21 @@ nRefToTime := T#6S;
 
 G_VarTask1.aMyDateArray[3] := D#2023-02-25; 
 G_VarTask1.eSensorOne := E_SensorBrands.Bosch; 
+
+// TON timer
 fbTon(IN:=G_VarTask1.bTimerStart); 
 G_VarTask1.bTimerEnd := fbTon.Q; 
-G_VarTask1.tTimerStatus := fbTon.ET; ]]></ST>
+G_VarTask1.tTimerStatus := fbTon.ET; 
+
+// TOF timer
+fbTof(IN:=G_VarTask2.stTimer2.bTimerStart); 
+G_VarTask2.stTimer2.tTimerStatus := fbTof.ET; 
+G_VarTask2.stTimer2.bTimerEnd := fbTof.Q; 
+
+G_VarTask2.fAngPosRad := Deg2Rad(fDegIn:=G_VarTask2.fAngPosDeg); 
+
+
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
