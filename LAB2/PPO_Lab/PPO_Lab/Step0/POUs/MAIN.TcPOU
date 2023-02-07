@@ -7,6 +7,11 @@ VAR
 	nRefToTime : REFERENCE TO TIME; 
 	fbTon : TON := (PT:=G_VarTask1.tTimer);   
 	fbTof : TOF := (PT:=G_VarTask2.stTimer2.tTimer); 
+	
+	bSpeedUpdate : BOOL; 
+	fGiveValue : REAL; 
+	fbRTrig : R_TRIG;
+	bInitiate : BOOL; 
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -32,6 +37,19 @@ G_VarTask2.stTimer2.tTimerStatus := fbTof.ET;
 G_VarTask2.stTimer2.bTimerEnd := fbTof.Q; 
 
 G_VarTask2.fAngPosRad := Deg2Rad(fDegIn:=G_VarTask2.fAngPosDeg); 
+
+// Task 3
+fbRTrig(CLK := bSpeedUpdate); 
+bInitiate := fbRTrig.Q; 
+
+IF bInitiate THEN
+	F_UpdateFunc(bUpdateValue:=bSpeedUpdate, fNewValue:=fGiveValue, stMotorParameter := G_MotorParameters.stMotorParameters);
+	F_UpdateFunc_REF(bUpdateValue:=bSpeedUpdate, fNewValue:=fGiveValue, stMotorParameter := G_MotorParameters.stMotorParameters1); 
+END_IF
+
+// FOR CASE instruction -> article number to sort stuff in to categories
+
+
 
 
 ]]></ST>

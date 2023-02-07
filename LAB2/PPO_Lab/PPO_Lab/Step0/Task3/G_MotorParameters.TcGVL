@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_MotorParameters" Id="{d1ab91bc-bd68-432d-a2a3-a180109be191}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	stMotorParameters : ST_MotorParams;
+	stMotorParameters1 : ST_MotorParams; 
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

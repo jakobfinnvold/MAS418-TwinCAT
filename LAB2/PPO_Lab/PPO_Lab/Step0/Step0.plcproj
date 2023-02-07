@@ -46,10 +46,27 @@
     <Compile Include="Task2\ST_Timer.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Task3\F_UpdateFunc.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task3\F_UpdateFunc_REF.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task3\G_MotorParameters.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="Task3\P_TASK3.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task3\ST_MotorParams.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="Task3" />
     <Folder Include="Task2" />
     <Folder Include="Task1" />
     <Folder Include="VISUs" />

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_MotorParams" Id="{36ed8198-8270-446f-a2b5-628824756362}">
+    <Declaration><![CDATA[TYPE ST_MotorParams : 
+STRUCT
+	fMaxSpeed : REAL; 
+	fMinSpeed : REAL; 
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
