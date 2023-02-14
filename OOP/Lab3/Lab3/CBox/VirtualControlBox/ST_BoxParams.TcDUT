@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_BoxParams" Id="{dc626546-78c1-4524-bcba-ff8ade9a7777}">
+    <Declaration><![CDATA[TYPE ST_BoxParams :
+STRUCT
+	Start : BOOL;
+	Stop : BOOL;
+	Off : BOOL;
+	Auto : BOOL;
+	Manual : BOOL;
+	TopSwitch : BOOL;
+	JOY_X : REAL;
+	JOY_Y : REAL; 
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
