@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_CtrlBox" Id="{fbc96af2-7cb2-44f6-9770-3d367d18e72c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CtrlBox
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="CheckStatus" Id="{d76ca786-9612-4368-9a84-956521259606}">
+      <Declaration><![CDATA[METHOD CheckStatus : BOOL
+VAR_INPUT
+	bOff : BOOL;
+	bAuto : BOOL;
+	bManual : BOOL; 
+	bStartButton : BOOL;
+	bStopButton : BOOL; 
+END_VAR
+VAR_OUTPUT
+	bNotReady : BOOL; 
+	bReady : BOOL; 
+	bStarting : BOOL;
+	bRunning : BOOL; 
+	bStopping : BOOL; 
+	bError : BOOL; 
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bOff THEN
+	bNotReady := TRUE; 
+END_IF
+
+IF bAuto OR bManual AND NOT bStartButton THEN
+	bReady := TRUE; 
+END_IF
+
+IF bStartButton THEN
+	bStarting := TRUE;
+END_IF
+
+CASE bStarting OF
+	
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ModeSelection" Id="{3f8742b6-e972-45ff-a32a-b2abdc82c2a2}">
+      <Declaration><![CDATA[METHOD ModeSelection : BOOL
+VAR_INPUT
+	bInOff : BOOL;
+	bInAuto : BOOL;
+	bInManual : BOOL; 
+END_VAR
+VAR_OUTPUT
+	bOutOff : BOOL;
+	bOutAuto : BOOL;
+	bOutManual : BOOL; 
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+IF NOT bInOff AND NOT bInAuto THEN
+	bOutManual := TRUE;
+ELSIF NOT bInOff AND NOT bInManual THEN
+	bOutAuto := TRUE; 
+ELSE
+	bInOff := TRUE;
+END_IF
+		
+
+]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

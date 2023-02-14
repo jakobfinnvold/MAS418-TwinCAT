@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="ITF_ControlBox" Id="{a59478a7-4183-4587-be52-b219ee5c873c}">
+    <Declaration><![CDATA[INTERFACE ITF_ControlBox
+
+METHOD Mode : BOOL
+VAR_INPUT
+	bInOff : BOOL;
+	bInAuto : BOOL;
+	bInManual : BOOL; 
+END_VAR
+VAR_OUTPUT
+	bOutOff : BOOL;
+	bOutAuto : BOOL;
+	bOutManual : BOOL; 
+END_VAR
+
+IF NOT bInOff AND NOT bInAuto THEN
+	bOutManual := TRUE;
+	ELSE
+		bOutAuto := TRUE; 
+	END_IF
+		
+END_IF
+
+]]></Declaration>
+  </Itf>
+</TcPlcObject>
