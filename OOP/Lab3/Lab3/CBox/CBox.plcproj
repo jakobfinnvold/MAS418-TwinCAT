@@ -20,6 +20,13 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="InputControlBox\InputGVL_ControlBox.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="InputControlBox\ST_RealBoxParams.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +34,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="VirtualControlBox\FBs + Methods\FB_CtrlBox.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VirtualControlBox\FBs + Methods\FC_ReadJoyPos.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="VirtualControlBox\GVL_ControlBox.TcGVL">
@@ -50,6 +60,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="InputControlBox" />
     <Folder Include="VirtualControlBox" />
     <Folder Include="VirtualControlBox\Interfaces" />
     <Folder Include="VirtualControlBox\FBs + Methods" />
@@ -112,11 +123,16 @@
       <Namespace>Tc3_Module</Namespace>
     </PlaceholderReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="CBox.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-  <Data>
-    <o xml:space="preserve" t="OptionKey">
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{246001F4-279D-43AC-B241-948EB31120E1}</v>
@@ -152,14 +168,14 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-  </Data>
-  <TypeList>
-    <Type n="Boolean">System.Boolean</Type>
-    <Type n="Hashtable">System.Collections.Hashtable</Type>
-    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-    <Type n="String">System.String</Type>
-  </TypeList>
-</XmlArchive>
+        </Data>
+        <TypeList>
+          <Type n="Boolean">System.Boolean</Type>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

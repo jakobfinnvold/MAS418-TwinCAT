@@ -71,11 +71,39 @@ END_IF]]></ST>
     <Method Name="JoyStick" Id="{81c3080b-d9ff-47d3-ade3-abcbe1798b31}">
       <Declaration><![CDATA[METHOD JoyStick : REAL
 VAR_INPUT
-	
+	dMachineStatus : INT; 
+	bTopSwitch : BOOL; 
+	bManMode : BOOL; 
+	dBoxSelect : INT; 
+	dJoyStickWinch : INT;
+	dJoyStickCyl : INT; 
+END_VAR
+VAR_OUTPUT
+	fJoyStickPosX : REAL;  
+	fJoyStickPosY : REAL; 
+END_VAR
+VAR
+	ControlBox : REFERENCE TO GVL_ControlBox; 
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[
+
+IF (bManMode = TRUE) AND (dMachineStatus = 4) AND bTopSwitch = TRUE THEN
+	IF dBoxSelect = 1 THEN
+		ControlBox := GVL_ControlBox;
+		fJoyStickPosX := GVL_ControlBox.stControlParams.JOY_X; 
+		fJoyStickPosY := GVL_ControlBox.stControlParams.JOY_Y; 
+	ELSE
+		ControlBox := InputGVL_ControlBox;
+		fJoyStickPosX := InputGVL_ControlBox.stRealControlParams.JOY_X/32767;
+		fJoyStickPosY := InputGVL_ControlBox.stRealControlParams.JOY_Y/32767;  	
+			
+	END_IF
+	
+	
+	
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="ModeSelection" Id="{3f8742b6-e972-45ff-a32a-b2abdc82c2a2}">

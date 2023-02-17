@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_RealBoxParams" Id="{15aba292-52b6-4c20-9aad-6198278461a5}">
+    <Declaration><![CDATA[TYPE ST_RealBoxParams :
+STRUCT
+	Start : BOOL;
+	Stop : BOOL;
+	Off : BOOL;
+	Auto : BOOL;
+	Manual : BOOL;
+	TopSwitch : BOOL;
+	JOY_X : REAL;
+	JOY_Y : REAL; 
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

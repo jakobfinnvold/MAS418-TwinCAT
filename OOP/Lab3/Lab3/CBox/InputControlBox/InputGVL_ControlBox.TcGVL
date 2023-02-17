@@ -3,6 +3,7 @@
   <GVL Name="InputGVL_ControlBox" Id="{0f4296d2-c735-406c-bb1d-db5f2a8b1826}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
+	stRealControlParams : ST_RealBoxParams; 
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

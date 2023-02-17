@@ -729,19 +729,19 @@
                   <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                     <o>
                       <v n="Id">1404881523L</v>
-                      <v n="Value" t="Single">-1</v>
-                    </o>
-                    <o>
-                      <v n="Id">3837067714L</v>
                       <v n="Value" t="Single">1</v>
                     </o>
                     <o>
+                      <v n="Id">3837067714L</v>
+                      <v n="Value" t="Single">-1</v>
+                    </o>
+                    <o>
                       <v n="Id">2867424708L</v>
-                      <v n="Value" t="Single">2</v>
+                      <v n="Value" t="Single">-1</v>
                     </o>
                     <o>
                       <v n="Id">440407611L</v>
-                      <v n="Value" t="Single">0.1</v>
+                      <v n="Value" t="Single">0.01</v>
                     </o>
                     <o>
                       <v n="Id">2608923542L</v>
@@ -1758,144 +1758,6 @@
                 <a n="LMGuids" et="Guid" />
                 <d n="SubElements" t="Hashtable" />
                 <v n="VisualElementId">18</v>
-                <l n="UserManagementAccessRights" t="ArrayList" />
-              </o>
-              <o>
-                <a n="ConfiguredComplexInputs" et="ComplexInput" />
-                <l n="Elements" t="ArrayList" />
-                <n n="VisualElementDescription" />
-                <o n="VisualElemMemberList" t="VisualElemMemberList">
-                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
-                    <o>
-                      <v n="Id">1404881523L</v>
-                      <v n="Value" t="Single">-1</v>
-                    </o>
-                    <o>
-                      <v n="Id">3837067714L</v>
-                      <v n="Value" t="Single">1</v>
-                    </o>
-                    <o>
-                      <v n="Id">2867424708L</v>
-                      <v n="Value" t="Single">2</v>
-                    </o>
-                    <o>
-                      <v n="Id">440407611L</v>
-                      <v n="Value" t="Single">0.1</v>
-                    </o>
-                    <o>
-                      <v n="Id">2608923542L</v>
-                      <v n="Value" t="Int16">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">469634675L</v>
-                      <v n="Value">"BOTTOM"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1274183999L</v>
-                      <v n="Value">"RIGHT"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2640826223L</v>
-                      <v n="Value">"VERTICAL"</v>
-                    </o>
-                    <o>
-                      <v n="Id">3675497837L</v>
-                      <v n="Value">"LEFT_RIGHT"</v>
-                    </o>
-                    <o>
-                      <v n="Id">3841252171L</v>
-                      <v n="Value">"TOP_DOWN"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2812299069L</v>
-                      <v n="Value">4294967295U</v>
-                    </o>
-                    <o>
-                      <v n="Id">494569607L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">3719097617L</v>
-                      <v n="Value">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">1649127785L</v>
-                      <v n="Value">1159</v>
-                    </o>
-                    <o>
-                      <v n="Id">357335551L</v>
-                      <v n="Value">161</v>
-                    </o>
-                    <o>
-                      <v n="Id">2422045748L</v>
-                      <v n="Value">153</v>
-                    </o>
-                    <o>
-                      <v n="Id">2134141914L</v>
-                      <v n="Value" t="Int16">224</v>
-                    </o>
-                    <o>
-                      <v n="Id">2985826283L</v>
-                      <v n="Value">"%i"</v>
-                    </o>
-                    <o>
-                      <v n="Id">493260384L</v>
-                      <v n="Value">4294967295U</v>
-                    </o>
-                    <o>
-                      <v n="Id">135947015L</v>
-                      <v n="Value">4278190080U</v>
-                    </o>
-                    <o>
-                      <v n="Id">2678395525L</v>
-                      <v n="Value">1U</v>
-                    </o>
-                    <o>
-                      <v n="Id">2340015797L</v>
-                      <v n="Value">"HCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2565699834L</v>
-                      <v n="Value">"VCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">390574330L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">571893170L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">3352862552L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">681815230L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">2597686782L</v>
-                      <v n="Value">false</v>
-                    </o>
-                    <o>
-                      <v n="Id">397264524L</v>
-                      <v n="Value">"GVL_ControlBox.stControlParams.JOY_Y"</v>
-                    </o>
-                  </l>
-                </o>
-                <v n="VisualElementName">"Slider"</v>
-                <v n="VisualElementTypeName">"VisuFbElemSlider"</v>
-                <v n="VisualElementIsRectangle">true</v>
-                <v n="VisualElementIdentifier">"GenElemInst_20"</v>
-                <n n="VisualElementOfflinePaintCommands" />
-                <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" />
-                <v n="VisualElementIdentification">{e67fd5d0-d325-4afd-af0f-4be396b92a41}</v>
-                <v n="VisualElementOwningObjectGuid">{c601b8de-a6cf-43e9-a9b3-3805307c77d9}</v>
-                <a n="LMGuids" et="Guid" />
-                <d n="SubElements" t="Hashtable" />
-                <v n="VisualElementId">20</v>
                 <l n="UserManagementAccessRights" t="ArrayList" />
               </o>
               <o>
@@ -3245,6 +3107,144 @@
                 <v n="VisualElementId">38</v>
                 <l n="UserManagementAccessRights" t="ArrayList" />
               </o>
+              <o>
+                <a n="ConfiguredComplexInputs" et="ComplexInput" />
+                <l n="Elements" t="ArrayList" />
+                <n n="VisualElementDescription" />
+                <o n="VisualElemMemberList" t="VisualElemMemberList">
+                  <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
+                    <o>
+                      <v n="Id">1404881523L</v>
+                      <v n="Value" t="Single">1</v>
+                    </o>
+                    <o>
+                      <v n="Id">3837067714L</v>
+                      <v n="Value" t="Single">-1</v>
+                    </o>
+                    <o>
+                      <v n="Id">2867424708L</v>
+                      <v n="Value" t="Single">-1</v>
+                    </o>
+                    <o>
+                      <v n="Id">440407611L</v>
+                      <v n="Value" t="Single">0.01</v>
+                    </o>
+                    <o>
+                      <v n="Id">2608923542L</v>
+                      <v n="Value" t="Int16">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">469634675L</v>
+                      <v n="Value">"BOTTOM"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1274183999L</v>
+                      <v n="Value">"RIGHT"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2640826223L</v>
+                      <v n="Value">"VERTICAL"</v>
+                    </o>
+                    <o>
+                      <v n="Id">3675497837L</v>
+                      <v n="Value">"LEFT_RIGHT"</v>
+                    </o>
+                    <o>
+                      <v n="Id">3841252171L</v>
+                      <v n="Value">"TOP_DOWN"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2812299069L</v>
+                      <v n="Value">4294967295U</v>
+                    </o>
+                    <o>
+                      <v n="Id">494569607L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">3719097617L</v>
+                      <v n="Value">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">1649127785L</v>
+                      <v n="Value">1166</v>
+                    </o>
+                    <o>
+                      <v n="Id">357335551L</v>
+                      <v n="Value">168</v>
+                    </o>
+                    <o>
+                      <v n="Id">2422045748L</v>
+                      <v n="Value">153</v>
+                    </o>
+                    <o>
+                      <v n="Id">2134141914L</v>
+                      <v n="Value" t="Int16">224</v>
+                    </o>
+                    <o>
+                      <v n="Id">2985826283L</v>
+                      <v n="Value">"%i"</v>
+                    </o>
+                    <o>
+                      <v n="Id">493260384L</v>
+                      <v n="Value">4294967295U</v>
+                    </o>
+                    <o>
+                      <v n="Id">135947015L</v>
+                      <v n="Value">4278190080U</v>
+                    </o>
+                    <o>
+                      <v n="Id">2678395525L</v>
+                      <v n="Value">1U</v>
+                    </o>
+                    <o>
+                      <v n="Id">2340015797L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2565699834L</v>
+                      <v n="Value">"VCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">390574330L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">571893170L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">3352862552L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">681815230L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2597686782L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">397264524L</v>
+                      <v n="Value">"GVL_ControlBox.stControlParams.JOY_Y"</v>
+                    </o>
+                  </l>
+                </o>
+                <v n="VisualElementName">"Slider"</v>
+                <v n="VisualElementTypeName">"VisuFbElemSlider"</v>
+                <v n="VisualElementIsRectangle">true</v>
+                <v n="VisualElementIdentifier">"GenElemInst_40"</v>
+                <n n="VisualElementOfflinePaintCommands" />
+                <n n="VisualElementFrameInformation" />
+                <d n="VisualElementInputActions" t="Hashtable" />
+                <v n="VisualElementIdentification">{8af171b3-ed9e-4365-86e4-5537553e4a31}</v>
+                <v n="VisualElementOwningObjectGuid">{c601b8de-a6cf-43e9-a9b3-3805307c77d9}</v>
+                <a n="LMGuids" et="Guid" />
+                <d n="SubElements" t="Hashtable" />
+                <v n="VisualElementId">41</v>
+                <l n="UserManagementAccessRights" t="ArrayList" />
+              </o>
             </l>
             <v n="BackgroundBitmapId">""</v>
             <v n="BackgroundColor">16777215</v>
@@ -3394,7 +3394,7 @@
             </o>
             <v n="DialogDut">{048b4742-7b5a-4836-80bb-365614017d97}</v>
           </o>
-          <v n="LastUsedIdForIdentifier">38</v>
+          <v n="LastUsedIdForIdentifier">40</v>
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>
