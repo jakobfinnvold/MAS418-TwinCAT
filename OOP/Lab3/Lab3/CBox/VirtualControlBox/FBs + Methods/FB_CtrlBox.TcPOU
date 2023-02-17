@@ -34,31 +34,48 @@ VAR_OUTPUT
 	bError : BOOL; 
 	bGreenLight : BOOL;
 	bRedLight : BOOL; 
+	dCurrentStatus : INT; 
 	
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF bOff AND NOT bManual AND NOT bAuto THEN
 	bNotReady := TRUE; 
+	dCurrentStatus := 1;
 	
 ELSIF bManual OR bAuto THEN
 	bReady := TRUE; 
+	dCurrentStatus := 2;
 	
 ELSIF bStartButton AND NOT bRunning THEN
 	bStarting := TRUE; 
+	dCurrentStatus := 3;
 	
 ELSIF (bManual AND bStartButton) OR (bAuto AND bStartButton AND fClockSignal > 0) THEN
 	bRunning := TRUE; 
 	bGreenLight := TRUE; 
+	dCurrentStatus := 4;
 	
 ELSIF (bStopButton AND bRunning) THEN
 	bStopping := TRUE;
 	bRedLight := TRUE; 
+	dCurrentStatus := 5;
 	
 ELSIF (fPipePressure < 10 OR bSensorError := TRUE) THEN
 	bError := TRUE; 
 	bRedLight := TRUE; 
+	dCurrentStatus := 6; 
 END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="JoyStick" Id="{81c3080b-d9ff-47d3-ade3-abcbe1798b31}">
+      <Declaration><![CDATA[METHOD JoyStick : REAL
+VAR_INPUT
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
     <Method Name="ModeSelection" Id="{3f8742b6-e972-45ff-a32a-b2abdc82c2a2}">
