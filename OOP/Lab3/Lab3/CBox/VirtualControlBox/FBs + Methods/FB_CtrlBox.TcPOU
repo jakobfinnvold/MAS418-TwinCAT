@@ -7,6 +7,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -20,6 +21,9 @@ VAR_INPUT
 	bManual : BOOL; 
 	bStartButton : BOOL;
 	bStopButton : BOOL; 
+	fClockSignal : REAL; 
+	fPipePressure : REAL;
+	bSensorError : BOOL; 
 END_VAR
 VAR_OUTPUT
 	bNotReady : BOOL; 
@@ -28,25 +32,33 @@ VAR_OUTPUT
 	bRunning : BOOL; 
 	bStopping : BOOL; 
 	bError : BOOL; 
+	bGreenLight : BOOL;
+	bRedLight : BOOL; 
 	
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF bOff THEN
+        <ST><![CDATA[IF bOff AND NOT bManual AND NOT bAuto THEN
 	bNotReady := TRUE; 
-END_IF
-
-IF bAuto OR bManual AND NOT bStartButton THEN
-	bReady := TRUE; 
-END_IF
-
-IF bStartButton THEN
-	bStarting := TRUE;
-END_IF
-
-CASE bStarting OF
 	
-END_CASE]]></ST>
+ELSIF bManual OR bAuto THEN
+	bReady := TRUE; 
+	
+ELSIF bStartButton AND NOT bRunning THEN
+	bStarting := TRUE; 
+	
+ELSIF (bManual AND bStartButton) OR (bAuto AND bStartButton AND fClockSignal > 0) THEN
+	bRunning := TRUE; 
+	bGreenLight := TRUE; 
+	
+ELSIF (bStopButton AND bRunning) THEN
+	bStopping := TRUE;
+	bRedLight := TRUE; 
+	
+ELSIF (fPipePressure < 10 OR bSensorError := TRUE) THEN
+	bError := TRUE; 
+	bRedLight := TRUE; 
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="ModeSelection" Id="{3f8742b6-e972-45ff-a32a-b2abdc82c2a2}">
