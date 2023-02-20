@@ -1,0 +1,195 @@
+(*
+ *
+ * File: MotionControl.exp
+ *
+ * IEC 61131-3 Structured Text (ST) code generated for subsystem "MotionControl/Path_signal_gen"
+ *
+ * Model name                      : MotionControl
+ * Model version                   : 1.7
+ * Model creator                   : Jakob
+ * Model last modified by          : Jakob
+ * Model last modified on          : Mon Feb 20 14:17:01 2023
+ * Model sample time               : 0s
+ * Subsystem name                  : MotionControl/Path_signal_gen
+ * Subsystem sample time           : 0.2s
+ * Simulink PLC Coder version      : 3.6 (R2022a) 13-Nov-2021
+ * ST code generated on            : Mon Feb 20 14:22:06 2023
+ *
+ * Target IDE selection            : 3S CoDeSys 2.3
+ * Test Bench included             : No
+ *
+ *)
+FUNCTION_BLOCK Path_signal_gen
+VAR_INPUT
+    x_0: LREAL;
+    v_0: LREAL;
+    x_ref: LREAL;
+    v_ref: LREAL;
+    t0: LREAL;
+    tRamp: LREAL;
+    tWait: LREAL;
+    t: LREAL;
+END_VAR
+VAR_OUTPUT
+    x: LREAL;
+    v: LREAL;
+    Tt: LREAL;
+    Err: LREAL;
+END_VAR
+VAR_TEMP
+    Err_0: DINT;
+    tHold: LREAL;
+    x1: LREAL;
+    x4: LREAL;
+    a_tmp: LREAL;
+    a_tmp_tmp: LREAL;
+    a_tmp_0: LREAL;
+    a_tmp_tmp_0: LREAL;
+    a_tmp_tmp_1: LREAL;
+    a_tmp_tmp_2: LREAL;
+    x1_tmp: LREAL;
+    x4_tmp: LREAL;
+END_VAR
+(* MATLAB Function: '<Root>/Path_signal_gen' *)
+(* x_0 = 0; *)
+(* v_0 = 0;  *)
+(* MATLAB Function 'Path_signal_gen': '<S1>:1' *)
+(* '<S1>:1:5' x_SetPoint = x_ref - x_0; *)
+(* '<S1>:1:6' vs = v_ref; *)
+(* '<S1>:1:7' slopeExt = v_0-vs; *)
+(* '<S1>:1:8' slopeRetr = -vs-v_0; *)
+(* '<S1>:1:10' as = vs/tRamp; *)
+(* Find acceleration *)
+(* '<S1>:1:11' s_acc = (vs^2-v_0^2)/as; *)
+(* Acceleration sp *)
+(* '<S1>:1:13' tHold = (x_SetPoint-s_acc)/vs; *)
+tHold := ((x_ref - x_0) - (((v_ref * v_ref) - (v_0 * v_0)) / (v_ref / tRamp))) / v_ref;
+(* '<S1>:1:15' if tHold < 0 *)
+IF tHold < 0.0 THEN 
+    (* '<S1>:1:16' Err = 1; *)
+    Err_0 := 1;
+ELSE 
+    (* '<S1>:1:17' else *)
+    (* '<S1>:1:18' Err = 0; *)
+    Err_0 := 0;
+END_IF;
+(* '<S1>:1:21' t1 = tRamp; *)
+(* '<S1>:1:22' t2 = tHold; *)
+(* '<S1>:1:23' t3 = tRamp; *)
+(* '<S1>:1:24' t4 = tWait; *)
+(* '<S1>:1:25' t5 = t1; *)
+(* '<S1>:1:26' t6 = t2; *)
+(* '<S1>:1:27' t7 = t3; *)
+(* Equations of motion: *)
+(* '<S1>:1:30' x1 = x_0 + v_0*((t0+t1)-t0) - (slopeExt/t1)*((t0+t1)-t0)^2/2; *)
+a_tmp_tmp := t0 + tRamp;
+a_tmp := a_tmp_tmp - t0;
+x1_tmp := (v_0 - v_ref) / tRamp;
+x1 := ((a_tmp * v_0) + x_0) - ((x1_tmp * (a_tmp * a_tmp)) / 2.0);
+(* '<S1>:1:31' x2 = x1 + vs * ((t0+t1+t2)-(t0+t1)); *)
+(* '<S1>:1:32' x4 = x_ref - v_0 * ((t0+t1+t2+t3+t4+t5)-(t0+t1+t2+t3+t4)) + (slopeRetr/t5)*((t0+t1+t2+t3+t4+t5)-(t0+t1+t2+t3+t4))^2/2; *)
+a_tmp_tmp_0 := a_tmp_tmp + tHold;
+a_tmp_tmp_1 := a_tmp_tmp_0 + tRamp;
+a_tmp := a_tmp_tmp_1 + tWait;
+a_tmp_tmp_2 := a_tmp + tRamp;
+a_tmp_0 := a_tmp_tmp_2 - a_tmp;
+x4_tmp := (( -v_ref) - v_0) / tRamp;
+x4 := (x_ref - (a_tmp_0 * v_0)) + ((x4_tmp * (a_tmp_0 * a_tmp_0)) / 2.0);
+(* '<S1>:1:33' x5 = x4 - vs*((t0+t1+t2+t3+t4+t5+t6)-(t0+t1+t2+t3+t4+t5)); *)
+(* '<S1>:1:35' if Err == 1 *)
+IF Err_0 = 1 THEN 
+    (* Outport: '<Root>/x' *)
+    (* '<S1>:1:36' x = x_0; *)
+    x := x_0;
+    (* Outport: '<Root>/v' *)
+    (* '<S1>:1:37' v = v_0; *)
+    v := v_0;
+ELSIF (t >= 0.0) AND (t < t0) THEN 
+    (* Outport: '<Root>/x' *)
+    (* '<S1>:1:38' elseif t >= 0 && t<t0 *)
+    (* '<S1>:1:39' x = x_0; *)
+    x := x_0;
+    (* Outport: '<Root>/v' *)
+    (* '<S1>:1:40' v = v_0; *)
+    v := v_0;
+ELSIF (t >= t0) AND (t < a_tmp_tmp) THEN 
+    (* '<S1>:1:41' elseif t >= t0 && t < (t0+t1) *)
+    (* '<S1>:1:42' x = x_0 + v_0*(t-t0) - (slopeExt/t1)*(t-t0)^2/2; *)
+    a_tmp := t - t0;
+    (* Outport: '<Root>/x' *)
+    x := ((a_tmp * v_0) + x_0) - ((x1_tmp * (a_tmp * a_tmp)) / 2.0);
+    (* Outport: '<Root>/v' *)
+    (* '<S1>:1:43' v = v_0 - (slopeExt/t1)*(t-t0); *)
+    v := v_0 - (x1_tmp * a_tmp);
+ELSIF (t >= a_tmp_tmp) AND (t < a_tmp_tmp_0) THEN 
+    (* Outport: '<Root>/x' *)
+    (* '<S1>:1:44' elseif t >=(t0+t1) && t < (t0+t1+t2) *)
+    (* '<S1>:1:45' x = x1 + vs*(t-(t0+t1)); *)
+    x := ((t - a_tmp_tmp) * v_ref) + x1;
+    (* Outport: '<Root>/v' *)
+    (* '<S1>:1:46' v = vs; *)
+    v := v_ref;
+ELSIF (t >= a_tmp_tmp_0) AND (t < a_tmp_tmp_1) THEN 
+    (* '<S1>:1:47' elseif t>=(t0+t1+t2) && t<(t0+t1+t2+t3) *)
+    (* '<S1>:1:48' x = x2 + vs*(t-(t0+t1+t2)) + (slopeExt/t3)*(t-(t0+t1+t2))^2/2; *)
+    a_tmp := t - a_tmp_tmp_0;
+    (* Outport: '<Root>/x' *)
+    x := ((((a_tmp_tmp_0 - a_tmp_tmp) * v_ref) + x1) + (a_tmp * v_ref)) + ((x1_tmp * (a_tmp * a_tmp)) / 2.0);
+    (* Outport: '<Root>/v' *)
+    (* '<S1>:1:49' v = vs + (slopeExt/t3)*(t-(t0+t1+t2)); *)
+    v := (a_tmp * x1_tmp) + v_ref;
+ELSIF (t >= a_tmp_tmp_1) AND (t < a_tmp) THEN 
+    (* Outport: '<Root>/x' *)
+    (* '<S1>:1:50' elseif t >=(t0+t1+t2+t3) && t<(t0+t1+t2+t3+t4) *)
+    (* '<S1>:1:51' x = x_ref; *)
+    x := x_ref;
+    (* Outport: '<Root>/v' *)
+    (* '<S1>:1:52' v = v_0; *)
+    v := v_0;
+ELSIF (t >= a_tmp) AND (t < a_tmp_tmp_2) THEN 
+    (* '<S1>:1:53' elseif t>=(t0+t1+t2+t3+t4) && t < (t0+t1+t2+t3+t4+t5) *)
+    (* '<S1>:1:54' x = x_ref - v_0*(t-(t0+t1+t2+t3+t4))+(slopeRetr/t5)*(t-(t0+t1+t2+t3+t4))^2/2; *)
+    a_tmp := t - a_tmp;
+    (* Outport: '<Root>/x' *)
+    x := (x_ref - (a_tmp * v_0)) + ((x4_tmp * (a_tmp * a_tmp)) / 2.0);
+    (* Outport: '<Root>/v' *)
+    (* '<S1>:1:55' v = v_0 + (slopeRetr/t5)*(t-(t0+t1+t2+t3+t4)); *)
+    v := (a_tmp * x4_tmp) + v_0;
+ELSE 
+    x1_tmp := a_tmp_tmp_2 + tHold;
+    IF (t >= a_tmp_tmp_2) AND (t < x1_tmp) THEN 
+        (* Outport: '<Root>/x' *)
+        (* '<S1>:1:56' elseif t>=(t0+t1+t2+t3+t4+t5) && t < (t0+t1+t2+t3+t4+t5+t6) *)
+        (* '<S1>:1:57' x = x4 - vs*(t-(t0+t1+t2+t3+t4+t5)); *)
+        x := x4 - ((t - a_tmp_tmp_2) * v_ref);
+        (* Outport: '<Root>/v' *)
+        (* '<S1>:1:58' v = -vs; *)
+        v :=  -v_ref;
+    ELSIF (t >= x1_tmp) AND (t < (x1_tmp + tRamp)) THEN 
+        (* '<S1>:1:59' elseif t >= (t0+t1+t2+t3+t4+t5+t6) && t < (t0+t1+t2+t3+t4+t5+t6+t7) *)
+        (* '<S1>:1:60' x = x5 - vs*(t-(t0+t1+t2+t3+t4+t5+t6)) - (slopeRetr/t3)*(t-(t0+t1+t2+t3+t4+t5+t6))^2/2; *)
+        a_tmp := t - x1_tmp;
+        (* Outport: '<Root>/x' *)
+        x := ((x4 - ((x1_tmp - a_tmp_tmp_2) * v_ref)) - (a_tmp * v_ref)) - ((x4_tmp * (a_tmp * a_tmp)) / 2.0);
+        (* Outport: '<Root>/v' *)
+        (* '<S1>:1:61' v = -vs-(slopeRetr/t3)*(t-(t0+t1+t2+t3+t4+t5+t6)); *)
+        v := ( -v_ref) - (a_tmp * x4_tmp);
+    ELSE 
+        (* Outport: '<Root>/x' *)
+        (* '<S1>:1:62' else *)
+        (* '<S1>:1:63' x = x_0; *)
+        x := x_0;
+        (* Outport: '<Root>/v' *)
+        (* '<S1>:1:64' v = v_0; *)
+        v := v_0;
+    END_IF;
+END_IF;
+(* Outport: '<Root>/Tt' incorporates:
+ *  MATLAB Function: '<Root>/Path_signal_gen' *)
+(* '<S1>:1:67' Tt = 0; *)
+(* t0+t1+t2+t3+t4+t5+t6+t7;  *)
+Tt := 0.0;
+(* Outport: '<Root>/Err' incorporates:
+ *  MATLAB Function: '<Root>/Path_signal_gen' *)
+Err := DINT_TO_LREAL(Err_0);
+END_FUNCTION_BLOCK

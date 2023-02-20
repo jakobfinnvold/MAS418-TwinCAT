@@ -3,10 +3,13 @@
   <POU Name="FB_PressureControl" Id="{451dd36a-efcd-4912-a177-4b39ebf3780a}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_PressureControl
 VAR_INPUT
+	fPressureVal : REAL;
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	fMaxPressure : REAL; 
+	bPressureError : BOOL; 
 END_VAR
 ]]></Declaration>
     <Implementation>
