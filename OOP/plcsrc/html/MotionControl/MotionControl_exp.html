@@ -13,7 +13,7 @@
 </span><span><a class="LN" name="2">    2   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="3">    3   </a><span class="CT"> * File: MotionControl.exp</span>
 </span><span><a class="LN" name="4">    4   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="5">    5   </a><span class="CT"> * IEC 61131-3 Structured Text (ST) code generated for subsystem "MotionControl/Open-loop VelControl (Manual)"</span>
+</span><span><a class="LN" name="5">    5   </a><span class="CT"> * IEC 61131-3 Structured Text (ST) code generated for subsystem "MotionControl/Closed-loop PosCtrl (Auto)"</span>
 </span><span><a class="LN" name="6">    6   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="7">    7   </a><span class="CT"> * Model name                      : MotionControl</span>
 </span><span><a class="LN" name="8">    8   </a><span class="CT"> * Model version                   : 1.7</span>
@@ -21,61 +21,48 @@
 </span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model last modified by          : Jakob</span>
 </span><span><a class="LN" name="11">   11   </a><span class="CT"> * Model last modified on          : Mon Feb 20 14:17:01 2023</span>
 </span><span><a class="LN" name="12">   12   </a><span class="CT"> * Model sample time               : 0s</span>
-</span><span><a class="LN" name="13">   13   </a><span class="CT"> * Subsystem name                  : MotionControl/Open-loop VelControl (Manual)</span>
+</span><span><a class="LN" name="13">   13   </a><span class="CT"> * Subsystem name                  : MotionControl/Closed-loop PosCtrl (Auto)</span>
 </span><span><a class="LN" name="14">   14   </a><span class="CT"> * Subsystem sample time           : 0.2s</span>
 </span><span><a class="LN" name="15">   15   </a><span class="CT"> * Simulink PLC Coder version      : 3.6 (R2022a) 13-Nov-2021</span>
-</span><span><a class="LN" name="16">   16   </a><span class="CT"> * ST code generated on            : Mon Feb 20 14:27:37 2023</span>
+</span><span><a class="LN" name="16">   16   </a><span class="CT"> * ST code generated on            : Mon Feb 20 14:29:20 2023</span>
 </span><span><a class="LN" name="17">   17   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="18">   18   </a><span class="CT"> * Target IDE selection            : 3S CoDeSys 2.3</span>
 </span><span><a class="LN" name="19">   19   </a><span class="CT"> * Test Bench included             : No</span>
 </span><span><a class="LN" name="20">   20   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="21">   21   </a><span class="CT"> *)</span>
-</span><span><a class="LN" name="22">   22   </a><span class="KW">FUNCTION_BLOCK</span> Open0
+</span><span><a class="LN" name="22">   22   </a><span class="KW">FUNCTION_BLOCK</span> Closed
 </span><span><a class="LN" name="23">   23   </a><span class="KW">VAR_INPUT</span>
-</span><span><a class="LN" name="24">   24   </a>    vel_refms: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="25">   25   </a>    Enable_Signal: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="26">   26   </a>    QMax_refLMIN: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="27">   27   </a><span class="KW">END_VAR</span>
-</span><span><a class="LN" name="28">   28   </a><span class="KW">VAR_OUTPUT</span>
-</span><span><a class="LN" name="29">   29   </a>    Ctrl_signalms: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="30">   30   </a><span class="KW">END_VAR</span>
-</span><span><a class="LN" name="31">   31   </a><span class="KW">VAR_TEMP</span>
-</span><span><a class="LN" name="32">   32   </a>    rtb_Switch: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="33">   33   </a><span class="KW">END_VAR</span>
-</span><span><a class="LN" name="34">   34   </a><span class="CT">(* Outputs for Atomic SubSystem: '&lt;Root&gt;/Open-loop VelControl (Manual)' *)</span>
-</span><span><a class="LN" name="35">   35   </a><span class="CT">(* Switch: '<a href="matlab:coder.internal.code2model('MotionControl:6')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="36">   36   </a><span class="CT"> *  Constant: '<a href="matlab:coder.internal.code2model('MotionControl:3')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Annulus_Area</i></font></a>'</span>
-</span><span><a class="LN" name="37">   37   </a><span class="CT"> *  Constant: '<a href="matlab:coder.internal.code2model('MotionControl:2')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Boreside_Area</i></font></a>'</span>
-</span><span><a class="LN" name="38">   38   </a><span class="CT"> *  Product: '<a href="matlab:coder.internal.code2model('MotionControl:9')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Product</i></font></a>'</span>
-</span><span><a class="LN" name="39">   39   </a><span class="CT"> *  Product: '<a href="matlab:coder.internal.code2model('MotionControl:10')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Product1</i></font></a>' *)</span>
-</span><span><a class="LN" name="40">   40   </a><span class="KW">IF</span> vel_refms &gt; 0.0 <span class="KW">THEN</span> 
-</span><span><a class="LN" name="41">   41   </a>    rtb_Switch := 0.0033183 * vel_refms;
-</span><span><a class="LN" name="42">   42   </a><span class="KW">ELSE</span> 
-</span><span><a class="LN" name="43">   43   </a>    rtb_Switch := vel_refms * 0.0023562;
-</span><span><a class="LN" name="44">   44   </a><span class="KW">END_IF</span>;
-</span><span><a class="LN" name="45">   45   </a><span class="CT">(* End of Switch: '<a href="matlab:coder.internal.code2model('MotionControl:6')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch</i></font></a>' *)</span>
-</span><span><a class="LN" name="46">   46   </a><span class="CT">(* Switch: '<a href="matlab:coder.internal.code2model('MotionControl:13')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch1</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="47">   47   </a><span class="CT"> *  Constant: '<a href="matlab:coder.internal.code2model('MotionControl:14')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Constant</i></font></a>'</span>
-</span><span><a class="LN" name="48">   48   </a><span class="CT"> *  Gain: '<a href="matlab:coder.internal.code2model('MotionControl:11')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/UnitConv</i></font></a>'</span>
-</span><span><a class="LN" name="49">   49   </a><span class="CT"> *  Product: '<a href="matlab:coder.internal.code2model('MotionControl:12')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Divide</i></font></a>' *)</span>
-</span><span><a class="LN" name="50">   50   </a><span class="KW">IF</span> Enable_Signal &gt; 0.0 <span class="KW">THEN</span> 
-</span><span><a class="LN" name="51">   51   </a>    Ctrl_signalms := (60000.0 * rtb_Switch) / QMax_refLMIN;
-</span><span><a class="LN" name="52">   52   </a><span class="KW">ELSE</span> 
-</span><span><a class="LN" name="53">   53   </a>    Ctrl_signalms := 0.0;
-</span><span><a class="LN" name="54">   54   </a><span class="KW">END_IF</span>;
-</span><span><a class="LN" name="55">   55   </a><span class="CT">(* End of Switch: '<a href="matlab:coder.internal.code2model('MotionControl:13')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch1</i></font></a>' *)</span>
-</span><span><a class="LN" name="56">   56   </a><span class="CT">(* Saturate: '<a href="matlab:coder.internal.code2model('MotionControl:45')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Saturation</i></font></a>' *)</span>
-</span><span><a class="LN" name="57">   57   </a><span class="KW">IF</span> Ctrl_signalms &gt; 0.05 <span class="KW">THEN</span> 
-</span><span><a class="LN" name="58">   58   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/Ctrl_signal(m//s)' *)</span>
-</span><span><a class="LN" name="59">   59   </a>    Ctrl_signalms := 0.05;
-</span><span><a class="LN" name="60">   60   </a><span class="KW">ELSIF</span> Ctrl_signalms &lt; -0.05 <span class="KW">THEN</span> 
-</span><span><a class="LN" name="61">   61   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/Ctrl_signal(m//s)' *)</span>
-</span><span><a class="LN" name="62">   62   </a>    Ctrl_signalms := -0.05;
-</span><span><a class="LN" name="63">   63   </a><span class="KW">END_IF</span>;
-</span><span><a class="LN" name="64">   64   </a><span class="CT">(* End of Saturate: '<a href="matlab:coder.internal.code2model('MotionControl:45')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Saturation</i></font></a>' *)</span>
-</span><span><a class="LN" name="65">   65   </a><span class="CT">(* End of Outputs for SubSystem: '&lt;Root&gt;/Open-loop VelControl (Manual)' *)</span>
-</span><span><a class="LN" name="66">   66   </a><span class="KW">END_FUNCTION_BLOCK</span>
-</span><span><a class="LN" name="67">   67   </a>
+</span><span><a class="LN" name="24">   24   </a>    Enable: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="25">   25   </a>    KpGain: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="26">   26   </a>    PosRef: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="27">   27   </a>    Pos_feedback: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="28">   28   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="29">   29   </a><span class="KW">VAR_OUTPUT</span>
+</span><span><a class="LN" name="30">   30   </a>    Ctrl_signal_Pos: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="31">   31   </a>    PosErr: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="32">   32   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="33">   33   </a><span class="CT">(* Outputs for Atomic SubSystem: '&lt;Root&gt;/Closed-loop PosCtrl (Auto)' *)</span>
+</span><span><a class="LN" name="34">   34   </a><span class="CT">(* Sum: '<a href="matlab:coder.internal.code2model('MotionControl:33')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Sum</i></font></a>' *)</span>
+</span><span><a class="LN" name="35">   35   </a>PosErr := PosRef - Pos_feedback;
+</span><span><a class="LN" name="36">   36   </a><span class="CT">(* Product: '<a href="matlab:coder.internal.code2model('MotionControl:34')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Product</i></font></a>' *)</span>
+</span><span><a class="LN" name="37">   37   </a>Ctrl_signal_Pos := KpGain * PosErr;
+</span><span><a class="LN" name="38">   38   </a><span class="CT">(* Saturate: '<a href="matlab:coder.internal.code2model('MotionControl:36')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Predefined Saturation</i></font></a>' *)</span>
+</span><span><a class="LN" name="39">   39   </a><span class="KW">IF</span> Ctrl_signal_Pos &gt; 1.0 <span class="KW">THEN</span> 
+</span><span><a class="LN" name="40">   40   </a>    Ctrl_signal_Pos := 1.0;
+</span><span><a class="LN" name="41">   41   </a><span class="KW">ELSIF</span> Ctrl_signal_Pos &lt; -1.0 <span class="KW">THEN</span> 
+</span><span><a class="LN" name="42">   42   </a>    Ctrl_signal_Pos := -1.0;
+</span><span><a class="LN" name="43">   43   </a><span class="KW">END_IF</span>;
+</span><span><a class="LN" name="44">   44   </a><span class="CT">(* End of Saturate: '<a href="matlab:coder.internal.code2model('MotionControl:36')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Predefined Saturation</i></font></a>' *)</span>
+</span><span><a class="LN" name="45">   45   </a><span class="CT">(* Switch: '<a href="matlab:coder.internal.code2model('MotionControl:37')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch</i></font></a>' *)</span>
+</span><span><a class="LN" name="46">   46   </a><span class="KW">IF</span> Enable &lt;= 0.0 <span class="KW">THEN</span> 
+</span><span><a class="LN" name="47">   47   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/Ctrl_signal_Pos' incorporates:</span>
+</span><span><a class="LN" name="48">   48   </a><span class="CT">     *  Constant: '<a href="matlab:coder.internal.code2model('MotionControl:39')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Constant</i></font></a>' *)</span>
+</span><span><a class="LN" name="49">   49   </a>    Ctrl_signal_Pos := 0.0;
+</span><span><a class="LN" name="50">   50   </a><span class="KW">END_IF</span>;
+</span><span><a class="LN" name="51">   51   </a><span class="CT">(* End of Switch: '<a href="matlab:coder.internal.code2model('MotionControl:37')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch</i></font></a>' *)</span>
+</span><span><a class="LN" name="52">   52   </a><span class="CT">(* End of Outputs for SubSystem: '&lt;Root&gt;/Closed-loop PosCtrl (Auto)' *)</span>
+</span><span><a class="LN" name="53">   53   </a><span class="KW">END_FUNCTION_BLOCK</span>
+</span><span><a class="LN" name="54">   54   </a>
 </span></pre>
 </td></tr></table>
 </p>
