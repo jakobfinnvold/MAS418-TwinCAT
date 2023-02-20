@@ -13,7 +13,7 @@
 </span><span><a class="LN" name="2">    2   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="3">    3   </a><span class="CT"> * File: MotionControl.exp</span>
 </span><span><a class="LN" name="4">    4   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="5">    5   </a><span class="CT"> * IEC 61131-3 Structured Text (ST) code generated for subsystem "MotionControl/Path_signal_gen"</span>
+</span><span><a class="LN" name="5">    5   </a><span class="CT"> * IEC 61131-3 Structured Text (ST) code generated for subsystem "MotionControl/Open-loop VelControl (Manual)"</span>
 </span><span><a class="LN" name="6">    6   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="7">    7   </a><span class="CT"> * Model name                      : MotionControl</span>
 </span><span><a class="LN" name="8">    8   </a><span class="CT"> * Model version                   : 1.7</span>
@@ -21,190 +21,61 @@
 </span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model last modified by          : Jakob</span>
 </span><span><a class="LN" name="11">   11   </a><span class="CT"> * Model last modified on          : Mon Feb 20 14:17:01 2023</span>
 </span><span><a class="LN" name="12">   12   </a><span class="CT"> * Model sample time               : 0s</span>
-</span><span><a class="LN" name="13">   13   </a><span class="CT"> * Subsystem name                  : MotionControl/Path_signal_gen</span>
+</span><span><a class="LN" name="13">   13   </a><span class="CT"> * Subsystem name                  : MotionControl/Open-loop VelControl (Manual)</span>
 </span><span><a class="LN" name="14">   14   </a><span class="CT"> * Subsystem sample time           : 0.2s</span>
 </span><span><a class="LN" name="15">   15   </a><span class="CT"> * Simulink PLC Coder version      : 3.6 (R2022a) 13-Nov-2021</span>
-</span><span><a class="LN" name="16">   16   </a><span class="CT"> * ST code generated on            : Mon Feb 20 14:22:06 2023</span>
+</span><span><a class="LN" name="16">   16   </a><span class="CT"> * ST code generated on            : Mon Feb 20 14:27:37 2023</span>
 </span><span><a class="LN" name="17">   17   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="18">   18   </a><span class="CT"> * Target IDE selection            : 3S CoDeSys 2.3</span>
 </span><span><a class="LN" name="19">   19   </a><span class="CT"> * Test Bench included             : No</span>
 </span><span><a class="LN" name="20">   20   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="21">   21   </a><span class="CT"> *)</span>
-</span><span><a class="LN" name="22">   22   </a><span class="KW">FUNCTION_BLOCK</span> Path_signal_gen
+</span><span><a class="LN" name="22">   22   </a><span class="KW">FUNCTION_BLOCK</span> Open0
 </span><span><a class="LN" name="23">   23   </a><span class="KW">VAR_INPUT</span>
-</span><span><a class="LN" name="24">   24   </a>    x_0: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="25">   25   </a>    v_0: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="26">   26   </a>    x_ref: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="27">   27   </a>    v_ref: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="28">   28   </a>    t0: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="29">   29   </a>    tRamp: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="30">   30   </a>    tWait: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="31">   31   </a>    t: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="32">   32   </a><span class="KW">END_VAR</span>
-</span><span><a class="LN" name="33">   33   </a><span class="KW">VAR_OUTPUT</span>
-</span><span><a class="LN" name="34">   34   </a>    x: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="35">   35   </a>    v: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="36">   36   </a>    Tt: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="37">   37   </a>    Err: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="38">   38   </a><span class="KW">END_VAR</span>
-</span><span><a class="LN" name="39">   39   </a><span class="KW">VAR_TEMP</span>
-</span><span><a class="LN" name="40">   40   </a>    Err_0: <span class="KW">DINT</span>;
-</span><span><a class="LN" name="41">   41   </a>    tHold: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="42">   42   </a>    x1: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="43">   43   </a>    x4: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="44">   44   </a>    a_tmp: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="45">   45   </a>    a_tmp_tmp: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="46">   46   </a>    a_tmp_0: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="47">   47   </a>    a_tmp_tmp_0: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="48">   48   </a>    a_tmp_tmp_1: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="49">   49   </a>    a_tmp_tmp_2: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="50">   50   </a>    x1_tmp: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="51">   51   </a>    x4_tmp: <span class="KW">LREAL</span>;
-</span><span><a class="LN" name="52">   52   </a><span class="KW">END_VAR</span>
-</span><span><a class="LN" name="53">   53   </a><span class="CT">(* MATLAB Function: '&lt;Root&gt;/Path_signal_gen' *)</span>
-</span><span><a class="LN" name="54">   54   </a><span class="CT">(* x_0 = 0; *)</span>
-</span><span><a class="LN" name="55">   55   </a><span class="CT">(* v_0 = 0;  *)</span>
-</span><span><a class="LN" name="56">   56   </a><span class="CT">(* MATLAB Function 'Path_signal_gen': '<a href="matlab:coder.internal.code2model('MotionControl:41:1')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1</i></font></a>' *)</span>
-</span><span><a class="LN" name="57">   57   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:5')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:5</i></font></a>' x_SetPoint = x_ref - x_0; *)</span>
-</span><span><a class="LN" name="58">   58   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:6')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:6</i></font></a>' vs = v_ref; *)</span>
-</span><span><a class="LN" name="59">   59   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:7')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:7</i></font></a>' slopeExt = v_0-vs; *)</span>
-</span><span><a class="LN" name="60">   60   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:8')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:8</i></font></a>' slopeRetr = -vs-v_0; *)</span>
-</span><span><a class="LN" name="61">   61   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:10')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:10</i></font></a>' as = vs/tRamp; *)</span>
-</span><span><a class="LN" name="62">   62   </a><span class="CT">(* Find acceleration *)</span>
-</span><span><a class="LN" name="63">   63   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:11')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:11</i></font></a>' s_acc = (vs^2-v_0^2)/as; *)</span>
-</span><span><a class="LN" name="64">   64   </a><span class="CT">(* Acceleration sp *)</span>
-</span><span><a class="LN" name="65">   65   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:13')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:13</i></font></a>' tHold = (x_SetPoint-s_acc)/vs; *)</span>
-</span><span><a class="LN" name="66">   66   </a>tHold := ((x_ref - x_0) - (((v_ref * v_ref) - (v_0 * v_0)) / (v_ref / tRamp))) / v_ref;
-</span><span><a class="LN" name="67">   67   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:15')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:15</i></font></a>' if tHold &lt; 0 *)</span>
-</span><span><a class="LN" name="68">   68   </a><span class="KW">IF</span> tHold &lt; 0.0 <span class="KW">THEN</span> 
-</span><span><a class="LN" name="69">   69   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:16')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:16</i></font></a>' Err = 1; *)</span>
-</span><span><a class="LN" name="70">   70   </a>    Err_0 := 1;
-</span><span><a class="LN" name="71">   71   </a><span class="KW">ELSE</span> 
-</span><span><a class="LN" name="72">   72   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:17')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:17</i></font></a>' else *)</span>
-</span><span><a class="LN" name="73">   73   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:18')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:18</i></font></a>' Err = 0; *)</span>
-</span><span><a class="LN" name="74">   74   </a>    Err_0 := 0;
-</span><span><a class="LN" name="75">   75   </a><span class="KW">END_IF</span>;
-</span><span><a class="LN" name="76">   76   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:21')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:21</i></font></a>' t1 = tRamp; *)</span>
-</span><span><a class="LN" name="77">   77   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:22')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:22</i></font></a>' t2 = tHold; *)</span>
-</span><span><a class="LN" name="78">   78   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:23')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:23</i></font></a>' t3 = tRamp; *)</span>
-</span><span><a class="LN" name="79">   79   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:24')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:24</i></font></a>' t4 = tWait; *)</span>
-</span><span><a class="LN" name="80">   80   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:25')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:25</i></font></a>' t5 = t1; *)</span>
-</span><span><a class="LN" name="81">   81   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:26')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:26</i></font></a>' t6 = t2; *)</span>
-</span><span><a class="LN" name="82">   82   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:27')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:27</i></font></a>' t7 = t3; *)</span>
-</span><span><a class="LN" name="83">   83   </a><span class="CT">(* Equations of motion: *)</span>
-</span><span><a class="LN" name="84">   84   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:30')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:30</i></font></a>' x1 = x_0 + v_0*((t0+t1)-t0) - (slopeExt/t1)*((t0+t1)-t0)^2/2; *)</span>
-</span><span><a class="LN" name="85">   85   </a>a_tmp_tmp := t0 + tRamp;
-</span><span><a class="LN" name="86">   86   </a>a_tmp := a_tmp_tmp - t0;
-</span><span><a class="LN" name="87">   87   </a>x1_tmp := (v_0 - v_ref) / tRamp;
-</span><span><a class="LN" name="88">   88   </a>x1 := ((a_tmp * v_0) + x_0) - ((x1_tmp * (a_tmp * a_tmp)) / 2.0);
-</span><span><a class="LN" name="89">   89   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:31')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:31</i></font></a>' x2 = x1 + vs * ((t0+t1+t2)-(t0+t1)); *)</span>
-</span><span><a class="LN" name="90">   90   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:32')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:32</i></font></a>' x4 = x_ref - v_0 * ((t0+t1+t2+t3+t4+t5)-(t0+t1+t2+t3+t4)) + (slopeRetr/t5)*((t0+t1+t2+t3+t4+t5)-(t0+t1+t2+t3+t4))^2/2; *)</span>
-</span><span><a class="LN" name="91">   91   </a>a_tmp_tmp_0 := a_tmp_tmp + tHold;
-</span><span><a class="LN" name="92">   92   </a>a_tmp_tmp_1 := a_tmp_tmp_0 + tRamp;
-</span><span><a class="LN" name="93">   93   </a>a_tmp := a_tmp_tmp_1 + tWait;
-</span><span><a class="LN" name="94">   94   </a>a_tmp_tmp_2 := a_tmp + tRamp;
-</span><span><a class="LN" name="95">   95   </a>a_tmp_0 := a_tmp_tmp_2 - a_tmp;
-</span><span><a class="LN" name="96">   96   </a>x4_tmp := (( -v_ref) - v_0) / tRamp;
-</span><span><a class="LN" name="97">   97   </a>x4 := (x_ref - (a_tmp_0 * v_0)) + ((x4_tmp * (a_tmp_0 * a_tmp_0)) / 2.0);
-</span><span><a class="LN" name="98">   98   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:33')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:33</i></font></a>' x5 = x4 - vs*((t0+t1+t2+t3+t4+t5+t6)-(t0+t1+t2+t3+t4+t5)); *)</span>
-</span><span><a class="LN" name="99">   99   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:35')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:35</i></font></a>' if Err == 1 *)</span>
-</span><span><a class="LN" name="100">  100   </a><span class="KW">IF</span> Err_0 = 1 <span class="KW">THEN</span> 
-</span><span><a class="LN" name="101">  101   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="102">  102   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:36')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:36</i></font></a>' x = x_0; *)</span>
-</span><span><a class="LN" name="103">  103   </a>    x := x_0;
-</span><span><a class="LN" name="104">  104   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="105">  105   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:37')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:37</i></font></a>' v = v_0; *)</span>
-</span><span><a class="LN" name="106">  106   </a>    v := v_0;
-</span><span><a class="LN" name="107">  107   </a><span class="KW">ELSIF</span> (t &gt;= 0.0) <span class="KW">AND</span> (t &lt; t0) <span class="KW">THEN</span> 
-</span><span><a class="LN" name="108">  108   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="109">  109   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:38')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:38</i></font></a>' elseif t &gt;= 0 && t&lt;t0 *)</span>
-</span><span><a class="LN" name="110">  110   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:39')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:39</i></font></a>' x = x_0; *)</span>
-</span><span><a class="LN" name="111">  111   </a>    x := x_0;
-</span><span><a class="LN" name="112">  112   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="113">  113   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:40')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:40</i></font></a>' v = v_0; *)</span>
-</span><span><a class="LN" name="114">  114   </a>    v := v_0;
-</span><span><a class="LN" name="115">  115   </a><span class="KW">ELSIF</span> (t &gt;= t0) <span class="KW">AND</span> (t &lt; a_tmp_tmp) <span class="KW">THEN</span> 
-</span><span><a class="LN" name="116">  116   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:41')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:41</i></font></a>' elseif t &gt;= t0 && t &lt; (t0+t1) *)</span>
-</span><span><a class="LN" name="117">  117   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:42')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:42</i></font></a>' x = x_0 + v_0*(t-t0) - (slopeExt/t1)*(t-t0)^2/2; *)</span>
-</span><span><a class="LN" name="118">  118   </a>    a_tmp := t - t0;
-</span><span><a class="LN" name="119">  119   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="120">  120   </a>    x := ((a_tmp * v_0) + x_0) - ((x1_tmp * (a_tmp * a_tmp)) / 2.0);
-</span><span><a class="LN" name="121">  121   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="122">  122   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:43')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:43</i></font></a>' v = v_0 - (slopeExt/t1)*(t-t0); *)</span>
-</span><span><a class="LN" name="123">  123   </a>    v := v_0 - (x1_tmp * a_tmp);
-</span><span><a class="LN" name="124">  124   </a><span class="KW">ELSIF</span> (t &gt;= a_tmp_tmp) <span class="KW">AND</span> (t &lt; a_tmp_tmp_0) <span class="KW">THEN</span> 
-</span><span><a class="LN" name="125">  125   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="126">  126   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:44')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:44</i></font></a>' elseif t &gt;=(t0+t1) && t &lt; (t0+t1+t2) *)</span>
-</span><span><a class="LN" name="127">  127   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:45')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:45</i></font></a>' x = x1 + vs*(t-(t0+t1)); *)</span>
-</span><span><a class="LN" name="128">  128   </a>    x := ((t - a_tmp_tmp) * v_ref) + x1;
-</span><span><a class="LN" name="129">  129   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="130">  130   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:46')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:46</i></font></a>' v = vs; *)</span>
-</span><span><a class="LN" name="131">  131   </a>    v := v_ref;
-</span><span><a class="LN" name="132">  132   </a><span class="KW">ELSIF</span> (t &gt;= a_tmp_tmp_0) <span class="KW">AND</span> (t &lt; a_tmp_tmp_1) <span class="KW">THEN</span> 
-</span><span><a class="LN" name="133">  133   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:47')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:47</i></font></a>' elseif t&gt;=(t0+t1+t2) && t&lt;(t0+t1+t2+t3) *)</span>
-</span><span><a class="LN" name="134">  134   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:48')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:48</i></font></a>' x = x2 + vs*(t-(t0+t1+t2)) + (slopeExt/t3)*(t-(t0+t1+t2))^2/2; *)</span>
-</span><span><a class="LN" name="135">  135   </a>    a_tmp := t - a_tmp_tmp_0;
-</span><span><a class="LN" name="136">  136   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="137">  137   </a>    x := ((((a_tmp_tmp_0 - a_tmp_tmp) * v_ref) + x1) + (a_tmp * v_ref)) + ((x1_tmp * (a_tmp * a_tmp)) / 2.0);
-</span><span><a class="LN" name="138">  138   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="139">  139   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:49')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:49</i></font></a>' v = vs + (slopeExt/t3)*(t-(t0+t1+t2)); *)</span>
-</span><span><a class="LN" name="140">  140   </a>    v := (a_tmp * x1_tmp) + v_ref;
-</span><span><a class="LN" name="141">  141   </a><span class="KW">ELSIF</span> (t &gt;= a_tmp_tmp_1) <span class="KW">AND</span> (t &lt; a_tmp) <span class="KW">THEN</span> 
-</span><span><a class="LN" name="142">  142   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="143">  143   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:50')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:50</i></font></a>' elseif t &gt;=(t0+t1+t2+t3) && t&lt;(t0+t1+t2+t3+t4) *)</span>
-</span><span><a class="LN" name="144">  144   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:51')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:51</i></font></a>' x = x_ref; *)</span>
-</span><span><a class="LN" name="145">  145   </a>    x := x_ref;
-</span><span><a class="LN" name="146">  146   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="147">  147   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:52')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:52</i></font></a>' v = v_0; *)</span>
-</span><span><a class="LN" name="148">  148   </a>    v := v_0;
-</span><span><a class="LN" name="149">  149   </a><span class="KW">ELSIF</span> (t &gt;= a_tmp) <span class="KW">AND</span> (t &lt; a_tmp_tmp_2) <span class="KW">THEN</span> 
-</span><span><a class="LN" name="150">  150   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:53')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:53</i></font></a>' elseif t&gt;=(t0+t1+t2+t3+t4) && t &lt; (t0+t1+t2+t3+t4+t5) *)</span>
-</span><span><a class="LN" name="151">  151   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:54')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:54</i></font></a>' x = x_ref - v_0*(t-(t0+t1+t2+t3+t4))+(slopeRetr/t5)*(t-(t0+t1+t2+t3+t4))^2/2; *)</span>
-</span><span><a class="LN" name="152">  152   </a>    a_tmp := t - a_tmp;
-</span><span><a class="LN" name="153">  153   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="154">  154   </a>    x := (x_ref - (a_tmp * v_0)) + ((x4_tmp * (a_tmp * a_tmp)) / 2.0);
-</span><span><a class="LN" name="155">  155   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="156">  156   </a>    <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:55')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:55</i></font></a>' v = v_0 + (slopeRetr/t5)*(t-(t0+t1+t2+t3+t4)); *)</span>
-</span><span><a class="LN" name="157">  157   </a>    v := (a_tmp * x4_tmp) + v_0;
-</span><span><a class="LN" name="158">  158   </a><span class="KW">ELSE</span> 
-</span><span><a class="LN" name="159">  159   </a>    x1_tmp := a_tmp_tmp_2 + tHold;
-</span><span><a class="LN" name="160">  160   </a>    <span class="KW">IF</span> (t &gt;= a_tmp_tmp_2) <span class="KW">AND</span> (t &lt; x1_tmp) <span class="KW">THEN</span> 
-</span><span><a class="LN" name="161">  161   </a>        <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="162">  162   </a>        <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:56')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:56</i></font></a>' elseif t&gt;=(t0+t1+t2+t3+t4+t5) && t &lt; (t0+t1+t2+t3+t4+t5+t6) *)</span>
-</span><span><a class="LN" name="163">  163   </a>        <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:57')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:57</i></font></a>' x = x4 - vs*(t-(t0+t1+t2+t3+t4+t5)); *)</span>
-</span><span><a class="LN" name="164">  164   </a>        x := x4 - ((t - a_tmp_tmp_2) * v_ref);
-</span><span><a class="LN" name="165">  165   </a>        <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="166">  166   </a>        <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:58')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:58</i></font></a>' v = -vs; *)</span>
-</span><span><a class="LN" name="167">  167   </a>        v :=  -v_ref;
-</span><span><a class="LN" name="168">  168   </a>    <span class="KW">ELSIF</span> (t &gt;= x1_tmp) <span class="KW">AND</span> (t &lt; (x1_tmp + tRamp)) <span class="KW">THEN</span> 
-</span><span><a class="LN" name="169">  169   </a>        <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:59')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:59</i></font></a>' elseif t &gt;= (t0+t1+t2+t3+t4+t5+t6) && t &lt; (t0+t1+t2+t3+t4+t5+t6+t7) *)</span>
-</span><span><a class="LN" name="170">  170   </a>        <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:60')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:60</i></font></a>' x = x5 - vs*(t-(t0+t1+t2+t3+t4+t5+t6)) - (slopeRetr/t3)*(t-(t0+t1+t2+t3+t4+t5+t6))^2/2; *)</span>
-</span><span><a class="LN" name="171">  171   </a>        a_tmp := t - x1_tmp;
-</span><span><a class="LN" name="172">  172   </a>        <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="173">  173   </a>        x := ((x4 - ((x1_tmp - a_tmp_tmp_2) * v_ref)) - (a_tmp * v_ref)) - ((x4_tmp * (a_tmp * a_tmp)) / 2.0);
-</span><span><a class="LN" name="174">  174   </a>        <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="175">  175   </a>        <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:61')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:61</i></font></a>' v = -vs-(slopeRetr/t3)*(t-(t0+t1+t2+t3+t4+t5+t6)); *)</span>
-</span><span><a class="LN" name="176">  176   </a>        v := ( -v_ref) - (a_tmp * x4_tmp);
-</span><span><a class="LN" name="177">  177   </a>    <span class="KW">ELSE</span> 
-</span><span><a class="LN" name="178">  178   </a>        <span class="CT">(* Outport: '&lt;Root&gt;/x' *)</span>
-</span><span><a class="LN" name="179">  179   </a>        <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:62')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:62</i></font></a>' else *)</span>
-</span><span><a class="LN" name="180">  180   </a>        <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:63')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:63</i></font></a>' x = x_0; *)</span>
-</span><span><a class="LN" name="181">  181   </a>        x := x_0;
-</span><span><a class="LN" name="182">  182   </a>        <span class="CT">(* Outport: '&lt;Root&gt;/v' *)</span>
-</span><span><a class="LN" name="183">  183   </a>        <span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:64')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:64</i></font></a>' v = v_0; *)</span>
-</span><span><a class="LN" name="184">  184   </a>        v := v_0;
-</span><span><a class="LN" name="185">  185   </a>    <span class="KW">END_IF</span>;
-</span><span><a class="LN" name="186">  186   </a><span class="KW">END_IF</span>;
-</span><span><a class="LN" name="187">  187   </a><span class="CT">(* Outport: '&lt;Root&gt;/Tt' incorporates:</span>
-</span><span><a class="LN" name="188">  188   </a><span class="CT"> *  MATLAB Function: '&lt;Root&gt;/Path_signal_gen' *)</span>
-</span><span><a class="LN" name="189">  189   </a><span class="CT">(* '<a href="matlab:coder.internal.code2model('MotionControl:41:1:67')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:1:67</i></font></a>' Tt = 0; *)</span>
-</span><span><a class="LN" name="190">  190   </a><span class="CT">(* t0+t1+t2+t3+t4+t5+t6+t7;  *)</span>
-</span><span><a class="LN" name="191">  191   </a>Tt := 0.0;
-</span><span><a class="LN" name="192">  192   </a><span class="CT">(* Outport: '&lt;Root&gt;/Err' incorporates:</span>
-</span><span><a class="LN" name="193">  193   </a><span class="CT"> *  MATLAB Function: '&lt;Root&gt;/Path_signal_gen' *)</span>
-</span><span><a class="LN" name="194">  194   </a>Err := DINT_TO_LREAL(Err_0);
-</span><span><a class="LN" name="195">  195   </a><span class="KW">END_FUNCTION_BLOCK</span>
-</span><span><a class="LN" name="196">  196   </a>
+</span><span><a class="LN" name="24">   24   </a>    vel_refms: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="25">   25   </a>    Enable_Signal: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="26">   26   </a>    QMax_refLMIN: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="27">   27   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="28">   28   </a><span class="KW">VAR_OUTPUT</span>
+</span><span><a class="LN" name="29">   29   </a>    Ctrl_signalms: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="30">   30   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="31">   31   </a><span class="KW">VAR_TEMP</span>
+</span><span><a class="LN" name="32">   32   </a>    rtb_Switch: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="33">   33   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="34">   34   </a><span class="CT">(* Outputs for Atomic SubSystem: '&lt;Root&gt;/Open-loop VelControl (Manual)' *)</span>
+</span><span><a class="LN" name="35">   35   </a><span class="CT">(* Switch: '<a href="matlab:coder.internal.code2model('MotionControl:6')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="36">   36   </a><span class="CT"> *  Constant: '<a href="matlab:coder.internal.code2model('MotionControl:3')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Annulus_Area</i></font></a>'</span>
+</span><span><a class="LN" name="37">   37   </a><span class="CT"> *  Constant: '<a href="matlab:coder.internal.code2model('MotionControl:2')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Boreside_Area</i></font></a>'</span>
+</span><span><a class="LN" name="38">   38   </a><span class="CT"> *  Product: '<a href="matlab:coder.internal.code2model('MotionControl:9')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Product</i></font></a>'</span>
+</span><span><a class="LN" name="39">   39   </a><span class="CT"> *  Product: '<a href="matlab:coder.internal.code2model('MotionControl:10')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Product1</i></font></a>' *)</span>
+</span><span><a class="LN" name="40">   40   </a><span class="KW">IF</span> vel_refms &gt; 0.0 <span class="KW">THEN</span> 
+</span><span><a class="LN" name="41">   41   </a>    rtb_Switch := 0.0033183 * vel_refms;
+</span><span><a class="LN" name="42">   42   </a><span class="KW">ELSE</span> 
+</span><span><a class="LN" name="43">   43   </a>    rtb_Switch := vel_refms * 0.0023562;
+</span><span><a class="LN" name="44">   44   </a><span class="KW">END_IF</span>;
+</span><span><a class="LN" name="45">   45   </a><span class="CT">(* End of Switch: '<a href="matlab:coder.internal.code2model('MotionControl:6')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch</i></font></a>' *)</span>
+</span><span><a class="LN" name="46">   46   </a><span class="CT">(* Switch: '<a href="matlab:coder.internal.code2model('MotionControl:13')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch1</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="47">   47   </a><span class="CT"> *  Constant: '<a href="matlab:coder.internal.code2model('MotionControl:14')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Constant</i></font></a>'</span>
+</span><span><a class="LN" name="48">   48   </a><span class="CT"> *  Gain: '<a href="matlab:coder.internal.code2model('MotionControl:11')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/UnitConv</i></font></a>'</span>
+</span><span><a class="LN" name="49">   49   </a><span class="CT"> *  Product: '<a href="matlab:coder.internal.code2model('MotionControl:12')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Divide</i></font></a>' *)</span>
+</span><span><a class="LN" name="50">   50   </a><span class="KW">IF</span> Enable_Signal &gt; 0.0 <span class="KW">THEN</span> 
+</span><span><a class="LN" name="51">   51   </a>    Ctrl_signalms := (60000.0 * rtb_Switch) / QMax_refLMIN;
+</span><span><a class="LN" name="52">   52   </a><span class="KW">ELSE</span> 
+</span><span><a class="LN" name="53">   53   </a>    Ctrl_signalms := 0.0;
+</span><span><a class="LN" name="54">   54   </a><span class="KW">END_IF</span>;
+</span><span><a class="LN" name="55">   55   </a><span class="CT">(* End of Switch: '<a href="matlab:coder.internal.code2model('MotionControl:13')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Switch1</i></font></a>' *)</span>
+</span><span><a class="LN" name="56">   56   </a><span class="CT">(* Saturate: '<a href="matlab:coder.internal.code2model('MotionControl:45')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Saturation</i></font></a>' *)</span>
+</span><span><a class="LN" name="57">   57   </a><span class="KW">IF</span> Ctrl_signalms &gt; 0.05 <span class="KW">THEN</span> 
+</span><span><a class="LN" name="58">   58   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/Ctrl_signal(m//s)' *)</span>
+</span><span><a class="LN" name="59">   59   </a>    Ctrl_signalms := 0.05;
+</span><span><a class="LN" name="60">   60   </a><span class="KW">ELSIF</span> Ctrl_signalms &lt; -0.05 <span class="KW">THEN</span> 
+</span><span><a class="LN" name="61">   61   </a>    <span class="CT">(* Outport: '&lt;Root&gt;/Ctrl_signal(m//s)' *)</span>
+</span><span><a class="LN" name="62">   62   </a>    Ctrl_signalms := -0.05;
+</span><span><a class="LN" name="63">   63   </a><span class="KW">END_IF</span>;
+</span><span><a class="LN" name="64">   64   </a><span class="CT">(* End of Saturate: '<a href="matlab:coder.internal.code2model('MotionControl:45')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Saturation</i></font></a>' *)</span>
+</span><span><a class="LN" name="65">   65   </a><span class="CT">(* End of Outputs for SubSystem: '&lt;Root&gt;/Open-loop VelControl (Manual)' *)</span>
+</span><span><a class="LN" name="66">   66   </a><span class="KW">END_FUNCTION_BLOCK</span>
+</span><span><a class="LN" name="67">   67   </a>
 </span></pre>
 </td></tr></table>
 </p>

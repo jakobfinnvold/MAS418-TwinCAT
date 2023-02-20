@@ -1,0 +1,66 @@
+(*
+ *
+ * File: MotionControl.exp
+ *
+ * IEC 61131-3 Structured Text (ST) code generated for subsystem "MotionControl/Open-loop VelControl (Manual)"
+ *
+ * Model name                      : MotionControl
+ * Model version                   : 1.7
+ * Model creator                   : Jakob
+ * Model last modified by          : Jakob
+ * Model last modified on          : Mon Feb 20 14:17:01 2023
+ * Model sample time               : 0s
+ * Subsystem name                  : MotionControl/Open-loop VelControl (Manual)
+ * Subsystem sample time           : 0.2s
+ * Simulink PLC Coder version      : 3.6 (R2022a) 13-Nov-2021
+ * ST code generated on            : Mon Feb 20 14:27:37 2023
+ *
+ * Target IDE selection            : 3S CoDeSys 2.3
+ * Test Bench included             : No
+ *
+ *)
+FUNCTION_BLOCK Open0
+VAR_INPUT
+    vel_refms: LREAL;
+    Enable_Signal: LREAL;
+    QMax_refLMIN: LREAL;
+END_VAR
+VAR_OUTPUT
+    Ctrl_signalms: LREAL;
+END_VAR
+VAR_TEMP
+    rtb_Switch: LREAL;
+END_VAR
+(* Outputs for Atomic SubSystem: '<Root>/Open-loop VelControl (Manual)' *)
+(* Switch: '<S1>/Switch' incorporates:
+ *  Constant: '<S1>/Annulus_Area'
+ *  Constant: '<S1>/Boreside_Area'
+ *  Product: '<S1>/Product'
+ *  Product: '<S1>/Product1' *)
+IF vel_refms > 0.0 THEN 
+    rtb_Switch := 0.0033183 * vel_refms;
+ELSE 
+    rtb_Switch := vel_refms * 0.0023562;
+END_IF;
+(* End of Switch: '<S1>/Switch' *)
+(* Switch: '<S1>/Switch1' incorporates:
+ *  Constant: '<S1>/Constant'
+ *  Gain: '<S1>/UnitConv'
+ *  Product: '<S1>/Divide' *)
+IF Enable_Signal > 0.0 THEN 
+    Ctrl_signalms := (60000.0 * rtb_Switch) / QMax_refLMIN;
+ELSE 
+    Ctrl_signalms := 0.0;
+END_IF;
+(* End of Switch: '<S1>/Switch1' *)
+(* Saturate: '<S1>/Saturation' *)
+IF Ctrl_signalms > 0.05 THEN 
+    (* Outport: '<Root>/Ctrl_signal(m//s)' *)
+    Ctrl_signalms := 0.05;
+ELSIF Ctrl_signalms < -0.05 THEN 
+    (* Outport: '<Root>/Ctrl_signal(m//s)' *)
+    Ctrl_signalms := -0.05;
+END_IF;
+(* End of Saturate: '<S1>/Saturation' *)
+(* End of Outputs for SubSystem: '<Root>/Open-loop VelControl (Manual)' *)
+END_FUNCTION_BLOCK
