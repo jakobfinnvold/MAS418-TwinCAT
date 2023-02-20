@@ -3,6 +3,7 @@
   <Itf Name="ITF_ControlBox" Id="{a59478a7-4183-4587-be52-b219ee5c873c}">
     <Declaration><![CDATA[INTERFACE ITF_ControlBox EXTENDS FB_CtrlBox
 
+
 ]]></Declaration>
   </Itf>
 </TcPlcObject>

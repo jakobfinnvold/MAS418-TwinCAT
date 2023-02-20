@@ -3,6 +3,7 @@
   <POU Name="FB_CtrlBox" Id="{fbc96af2-7cb2-44f6-9770-3d367d18e72c}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CtrlBox
 VAR_INPUT
+	// Maybe create array w/struct vals here
 END_VAR
 VAR_OUTPUT
 END_VAR
@@ -11,7 +12,13 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[//ModeSelection(//INPUTS)
+
+//CheckStatus (Use outputs from mode selection)
+
+// Joystick (Give input for which mode is activated
+
+]]></ST>
     </Implementation>
     <Method Name="CheckStatus" Id="{d76ca786-9612-4368-9a84-956521259606}">
       <Declaration><![CDATA[METHOD CheckStatus : BOOL

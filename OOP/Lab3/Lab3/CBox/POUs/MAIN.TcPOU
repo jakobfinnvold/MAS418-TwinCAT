@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{ed7f8c68-f737-44a8-80cf-26713a80f269}">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{ed7f8c68-f737-44a8-80cf-26713a80f269}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	bmanSelect : BOOL := ST_BoxParams.Manual; 
+	bAutoSelect : BOOL := ST_BoxParams.Auto; 
+	bStart : BOOL := ST_BoxParams.Start;
+	bStop : BOOL := ST_BoxParams.Stop; 
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>

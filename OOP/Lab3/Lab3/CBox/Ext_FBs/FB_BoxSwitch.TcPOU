@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_BoxSwitch" Id="{28618e52-2331-4a4f-bace-24cf07f6a69e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_BoxSwitch
+VAR_INPUT
+	bAutoSelect : BOOL;
+	bManualSelect : BOOL; 
+END_VAR
+VAR_OUTPUT
+	bManModeEnable : BOOL;
+	bAutoModeEnable : BOOL; 
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bAutoSelect = TRUE THEN
+	bAutoModeEnable := TRUE; 
+ELSIF bManualSelect = TRUE THEN
+	bManModeEnable := TRUE;	
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

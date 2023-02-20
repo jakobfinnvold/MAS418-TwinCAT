@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_MotionControl" Id="{660c2383-29e1-4473-b80e-34cd4960c117}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
