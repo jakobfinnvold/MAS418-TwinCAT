@@ -1,0 +1,53 @@
+(*
+ *
+ * File: MotionControl.st
+ *
+ * IEC 61131-3 Structured Text (ST) code generated for subsystem "MotionControl/Closed-loop PosCtrl (Auto)"
+ *
+ * Model name                      : MotionControl
+ * Model version                   : 1.7
+ * Model creator                   : Jakob
+ * Model last modified by          : Jakob
+ * Model last modified on          : Sun Feb 26 16:35:59 2023
+ * Model sample time               : 0s
+ * Subsystem name                  : MotionControl/Closed-loop PosCtrl (Auto)
+ * Subsystem sample time           : 0.4s
+ * Simulink PLC Coder version      : 3.6 (R2022a) 13-Nov-2021
+ * ST code generated on            : Sun Feb 26 16:46:41 2023
+ *
+ * Target IDE selection            : Beckhoff TwinCAT 3
+ * Test Bench included             : No
+ *
+ *)
+FUNCTION_BLOCK Closed
+VAR_INPUT
+    Enable: LREAL;
+    KpGain: LREAL;
+    PosRef: LREAL;
+    Pos_feedback: LREAL;
+END_VAR
+VAR_OUTPUT
+    Ctrl_signal_Pos: LREAL;
+    PosErr: LREAL;
+END_VAR
+(* Outputs for Atomic SubSystem: '<Root>/Closed-loop PosCtrl (Auto)' *)
+(* Sum: '<S1>/Sum' *)
+PosErr := PosRef - Pos_feedback;
+(* Product: '<S1>/Product' *)
+Ctrl_signal_Pos := KpGain * PosErr;
+(* Saturate: '<S1>/Predefined Saturation' *)
+IF Ctrl_signal_Pos > 1.0 THEN 
+    Ctrl_signal_Pos := 1.0;
+ELSIF Ctrl_signal_Pos < -1.0 THEN 
+    Ctrl_signal_Pos := -1.0;
+END_IF;
+(* End of Saturate: '<S1>/Predefined Saturation' *)
+(* Switch: '<S1>/Switch' *)
+IF Enable <= 0.0 THEN 
+    (* Outport: '<Root>/Ctrl_signal_Pos' incorporates:
+     *  Constant: '<S1>/Constant' *)
+    Ctrl_signal_Pos := 0.0;
+END_IF;
+(* End of Switch: '<S1>/Switch' *)
+(* End of Outputs for SubSystem: '<Root>/Closed-loop PosCtrl (Auto)' *)
+END_FUNCTION_BLOCK
